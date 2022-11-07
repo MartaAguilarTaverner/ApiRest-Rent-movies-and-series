@@ -5,7 +5,7 @@ User.init({
     name: {
         type: DataTypes.STRING,
         require: true,
-        unique: true,
+        allowNull: false,
         minLenght: 5,
     },
     uuid: {
@@ -15,7 +15,7 @@ User.init({
     },
     email: {
         type: DataTypes.STRING,
-        require: true,
+        allowNull: false,
     },
     age: DataTypes.RANGE(DataTypes.DATE),
     Order: {},

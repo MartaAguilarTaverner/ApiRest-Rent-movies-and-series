@@ -4,23 +4,26 @@ const sequelize = require("../db/db");
 Movies.init({
     title: {
         type: DataTypes.STRING,
-        require: true,
+        allowNull: false,
         unique: true,
         minLenght: 1,
     },
     uuid: {
-        type: DataTypes.STRING,
-        default: () => crypto.randomUUID(),
+        type: DataTypes.UUID,
+        defaultValue: DataTypes.UUIDV4,
         unique: true,
+        /*         type: DataTypes.STRING,
+        default: () => crypto.randomUUID(),
+        unique: true, */
     },
     description: {
         type: DataTypes.TEXT,
-        require: true,
+        allowNull: false,
     },
     year: DataTypes.NUMBER,
     director: {
         type: STRING,
-        require: true,
+        allowNull: false,
     },
     genre: {
         principal_genre: {
