@@ -6,4 +6,6 @@ app.use(express.json());
 
 app.use(router);
 ç;
-app.listen(PORT, () => {});
+app.listen(PORT, () => {
+    `Servidor Corriendo en el puerto ${PORT}`;
+});
