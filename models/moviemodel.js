@@ -1,7 +1,7 @@
 const { DataTypes, Model, STRING, TEXT, NUMBER } = require("sequelize");
 const sequelize = require("../db/db");
 
-Series.init({
+Movies.init({
     title: {
         type: DataTypes.STRING,
         require: true,
@@ -22,10 +22,6 @@ Series.init({
         type: STRING,
         require: true,
     },
-    minage: {
-        type: DataTypes.INTEGER,
-        require: true,
-    },
     genre: {
         principal_genre: {
             type: DataTypes.STRING,
@@ -37,12 +33,6 @@ Series.init({
             type: DataTypes.STRING,
         },
     },
-    seasons: {
-        type: DataTypes.NUMBER,
-    },
-    episodes: {
-        type: DataTypes.NUMBER,
-    },
 });
 
-class Series extends Model {}
+class Movie extends Model {}
