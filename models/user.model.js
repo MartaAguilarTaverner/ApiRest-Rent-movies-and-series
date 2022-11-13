@@ -1,5 +1,4 @@
 const { DataTypes, Model } = require("sequelize");
-const crypto = require("crypto-js");
 const sequelize = require("../db/db");
 
 class User extends Model {}

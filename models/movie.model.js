@@ -1,4 +1,4 @@
-const { DataTypes, Model, STRING, TEXT, NUMBER } = require("sequelize");
+const { DataTypes, Model } = require("sequelize");
 const GenreModel = require("./genre.model");
 const sequelize = require("../db/db");
 
@@ -21,7 +21,7 @@ Movie.init(
             allowNull: false,
         },
         director: {
-            type: STRING,
+            type: DataTypes.STRING,
             allowNull: false,
         },
         genreId: {
@@ -32,11 +32,11 @@ Movie.init(
             },
             allowNull: false,
         },
-        Rating: {
-            type: DataTypes.INTEGER,
+        rating: {
+            type: DataTypes.DOUBLE,
             allowNull: false,
         },
-        minage: {
+        minAge: {
             type: DataTypes.INTEGER,
             allowNull: false,
         },
