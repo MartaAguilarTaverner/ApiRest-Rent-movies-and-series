@@ -1,31 +1,22 @@
 const express = require("express");
-
+const colors = require("colors");
+const morgan = require("morgan");
+const logger = require("./config/winston");
+const db = require("./db/db");
 const router = require("./router");
-const sequelize = require("./db/db");
-const Models = require("./models");
-const Seeds = require("./seeders");
-
-const initDB = async () => {
-    try {
-        await sequelize.authenticate();
-
-        await Models.generateTables();
-
-        Seeds.generateSeeds();
-    } catch (error) {
-        console.error("Error Trace: ", error);
-    }
-};
-
-// initDB();
 
 const app = express();
-const PORT = 3001;
+const PORT = process.env.PORT || 3001;
+
+app.use(morgan("combined", { stream: logger.stream }));
 app.use(express.json());
 
 // app.use(router);
 
-app.listen(PORT, () => {
-    console.log(`Servidor Corriendo en el puerto ${PORT}`);
-    initDB();
+db.then(() => {
+    app.listen(PORT, () => {
+        console.log(`Servidor Corriendo en el puerto ${PORT}`);
+    });
+}).catch((err) => {
+    console.error(err);
 });

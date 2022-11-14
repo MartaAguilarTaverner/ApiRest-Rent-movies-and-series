@@ -1,8 +1,6 @@
-const { SeriesModel } = require("../models");
-
 module.exports = {
-    create: async () => {
-        await SeriesModel.bulkCreate([
+    up: async (queryInterface, Sequelize) => {
+        await queryInterface.bulkInsert("series", [
             {
                 title: "Breaking Bad",
                 description:
@@ -17,6 +15,8 @@ module.exports = {
                 nextEpisodeDate: null,
                 cinemaPasses: false,
                 theaterPasses: true,
+                createdAt: new Date(),
+                updatedAt: new Date(),
             },
             {
                 title: "Chernobyl",
@@ -32,6 +32,8 @@ module.exports = {
                 nextEpisodeDate: null,
                 cinemaPasses: false,
                 theaterPasses: false,
+                createdAt: new Date(),
+                updatedAt: new Date(),
             },
             {
                 title: "Game of Thrones",
@@ -47,6 +49,8 @@ module.exports = {
                 nextEpisodeDate: null,
                 cinemaPasses: false,
                 theaterPasses: false,
+                createdAt: new Date(),
+                updatedAt: new Date(),
             },
             {
                 title: "Rick and Morty",
@@ -62,6 +66,8 @@ module.exports = {
                 nextEpisodeDate: new Date(),
                 cinemaPasses: false,
                 theaterPasses: false,
+                createdAt: new Date(),
+                updatedAt: new Date(),
             },
             {
                 title: "Fullmetal Alchemist: Brotherhood",
@@ -77,6 +83,8 @@ module.exports = {
                 nextEpisodeDate: null,
                 cinemaPasses: true,
                 theaterPasses: false,
+                createdAt: new Date(),
+                updatedAt: new Date(),
             },
             {
                 title: "Sherlock",
@@ -92,6 +100,8 @@ module.exports = {
                 nextEpisodeDate: null,
                 cinemaPasses: false,
                 theaterPasses: true,
+                createdAt: new Date(),
+                updatedAt: new Date(),
             },
             {
                 title: "Cowboy Bebop",
@@ -107,6 +117,8 @@ module.exports = {
                 nextEpisodeDate: null,
                 cinemaPasses: true,
                 theaterPasses: false,
+                createdAt: new Date(),
+                updatedAt: new Date(),
             },
             {
                 title: "Black Mirror",
@@ -122,6 +134,8 @@ module.exports = {
                 nextEpisodeDate: new Date(),
                 cinemaPasses: false,
                 theaterPasses: true,
+                createdAt: new Date(),
+                updatedAt: new Date(),
             },
             {
                 title: "South Park",
@@ -137,6 +151,8 @@ module.exports = {
                 nextEpisodeDate: new Date(),
                 cinemaPasses: false,
                 theaterPasses: false,
+                createdAt: new Date(),
+                updatedAt: new Date(),
             },
             {
                 title: "Dark",
@@ -152,6 +168,8 @@ module.exports = {
                 nextEpisodeDate: null,
                 cinemaPasses: false,
                 theaterPasses: false,
+                createdAt: new Date(),
+                updatedAt: new Date(),
             },
             {
                 title: "The Boys",
@@ -167,6 +185,8 @@ module.exports = {
                 nextEpisodeDate: new Date(),
                 cinemaPasses: false,
                 theaterPasses: false,
+                createdAt: new Date(),
+                updatedAt: new Date(),
             },
             {
                 title: "Doctor Who",
@@ -182,6 +202,8 @@ module.exports = {
                 nextEpisodeDate: new Date(),
                 cinemaPasses: true,
                 theaterPasses: true,
+                createdAt: new Date(),
+                updatedAt: new Date(),
             },
             {
                 title: "The Office",
@@ -197,6 +219,8 @@ module.exports = {
                 nextEpisodeDate: null,
                 cinemaPasses: false,
                 theaterPasses: true,
+                createdAt: new Date(),
+                updatedAt: new Date(),
             },
             {
                 title: "Silicon Valley",
@@ -212,6 +236,8 @@ module.exports = {
                 nextEpisodeDate: new Date(),
                 cinemaPasses: false,
                 theaterPasses: false,
+                createdAt: new Date(),
+                updatedAt: new Date(),
             },
             {
                 title: "The IT Crowd",
@@ -227,7 +253,12 @@ module.exports = {
                 nextEpisodeDate: null,
                 cinemaPasses: false,
                 theaterPasses: false,
+                createdAt: new Date(),
+                updatedAt: new Date(),
             },
         ]);
+    },
+    down: async (queryInterface, Sequelize) => {
+        await queryInterface.bulkDelete("series", null, {});
     },
 };

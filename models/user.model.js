@@ -1,32 +1,42 @@
-const { DataTypes, Model } = require("sequelize");
-const sequelize = require("../db/db");
+const { Model } = require("sequelize");
 
-class User extends Model {}
-
-User.init(
-    {
-        name: {
-            type: DataTypes.STRING,
-            require: true,
-            allowNull: false,
-            minLenght: 5,
-        },
-        email: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
-        isAdmin: {
-            type: DataTypes.BOOLEAN,
-            allowNull: false,
-        },
-        dateBirth: DataTypes.DATE,
-        active: DataTypes.BOOLEAN,
-    },
-    {
-        sequelize,
-        model: "User",
-        freezeTableName: true,
+module.exports = (sequelize, DataTypes) => {
+    class User extends Model {
+        static associate(models) {
+            this.hasMany(models.UserOrders, {
+                foreignKey: "userId",
+            });
+        }
     }
-);
 
-module.exports = User;
+    User.init(
+        {
+            name: {
+                type: DataTypes.STRING,
+                require: true,
+                allowNull: false,
+                minLenght: 5,
+            },
+            email: {
+                type: DataTypes.STRING,
+                allowNull: false,
+            },
+            isAdmin: {
+                type: DataTypes.BOOLEAN,
+                allowNull: false,
+            },
+            dateBirth: DataTypes.DATE,
+            subscribed: DataTypes.BOOLEAN,
+            password: {
+                type: DataTypes.STRING,
+                allowNull: false,
+            },
+        },
+        {
+            sequelize,
+            modelName: "User",
+        }
+    );
+
+    return User;
+};

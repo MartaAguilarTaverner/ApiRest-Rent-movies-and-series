@@ -1,22 +1,32 @@
-const { DataTypes, Model } = require("sequelize");
-const sequelize = require("../db/db");
+const { Model } = require("sequelize");
 
-class Genre extends Model {}
+module.exports = (sequelize, DataTypes) => {
+    class Genre extends Model {
+        static associate(models) {
+            this.hasMany(models.Movie, {
+                foreignKey: "genreId",
+            });
 
-Genre.init(
-    {
-        name: {
-            type: DataTypes.STRING,
-            unique: true,
-            minLength: 1,
-            allowNull: false,
-        },
-    },
-    {
-        sequelize,
-        model: "Genre",
-        freezeTableName: true,
+            this.hasMany(models.Series, {
+                foreignKey: "genreId",
+            });
+        }
     }
-);
 
-module.exports = Genre;
+    Genre.init(
+        {
+            name: {
+                type: DataTypes.STRING,
+                unique: true,
+                minLength: 1,
+                allowNull: false,
+            },
+        },
+        {
+            sequelize,
+            modelName: "Genre",
+        }
+    );
+
+    return Genre;
+};

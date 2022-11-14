@@ -1,8 +1,6 @@
-const { MovieModel } = require("../models");
-
 module.exports = {
-    create: async () => {
-        await MovieModel.bulkCreate([
+    up: async (queryInterface, Sequelize) => {
+        await queryInterface.bulkInsert("movie", [
             {
                 title: "The Shawshank Redemption",
                 description:
@@ -12,6 +10,8 @@ module.exports = {
                 genreId: 3,
                 rating: 8.9,
                 minAge: 14,
+                createdAt: new Date(),
+                updatedAt: new Date(),
             },
             {
                 title: "Pulp Fiction",
@@ -22,6 +22,8 @@ module.exports = {
                 genreId: 6,
                 rating: 9.3,
                 minAge: 16,
+                createdAt: new Date(),
+                updatedAt: new Date(),
             },
             {
                 title: "The Godfather",
@@ -32,6 +34,8 @@ module.exports = {
                 genreId: 6,
                 rating: 9.6,
                 minAge: 14,
+                createdAt: new Date(),
+                updatedAt: new Date(),
             },
             {
                 title: "Fight Club",
@@ -42,6 +46,8 @@ module.exports = {
                 genreId: 3,
                 rating: 8.5,
                 minAge: 14,
+                createdAt: new Date(),
+                updatedAt: new Date(),
             },
             {
                 title: "Inception",
@@ -52,6 +58,8 @@ module.exports = {
                 genreId: 11,
                 rating: 9,
                 minAge: 12,
+                createdAt: new Date(),
+                updatedAt: new Date(),
             },
             {
                 title: "Matrix",
@@ -62,6 +70,8 @@ module.exports = {
                 genreId: 4,
                 rating: 9.5,
                 minAge: 12,
+                createdAt: new Date(),
+                updatedAt: new Date(),
             },
             {
                 title: "The Silence of the Lambs",
@@ -72,6 +82,8 @@ module.exports = {
                 genreId: 1,
                 rating: 9.7,
                 minAge: 14,
+                createdAt: new Date(),
+                updatedAt: new Date(),
             },
             {
                 title: "Spirited Away",
@@ -82,6 +94,8 @@ module.exports = {
                 genreId: 10,
                 rating: 9.8,
                 minAge: 3,
+                createdAt: new Date(),
+                updatedAt: new Date(),
             },
             {
                 title: "Psicosis",
@@ -92,6 +106,8 @@ module.exports = {
                 genreId: 1,
                 rating: 8.7,
                 minAge: 13,
+                createdAt: new Date(),
+                updatedAt: new Date(),
             },
             {
                 title: "The Pianist",
@@ -102,6 +118,8 @@ module.exports = {
                 genreId: 3,
                 rating: 9.5,
                 minAge: 12,
+                createdAt: new Date(),
+                updatedAt: new Date(),
             },
             {
                 title: "The Great Dictator",
@@ -112,6 +130,8 @@ module.exports = {
                 genreId: 8,
                 rating: 9.9,
                 minAge: 6,
+                createdAt: new Date(),
+                updatedAt: new Date(),
             },
             {
                 title: "Everything Everywhere All at Once",
@@ -122,6 +142,8 @@ module.exports = {
                 genreId: 11,
                 rating: 10,
                 minAge: 4,
+                createdAt: new Date(),
+                updatedAt: new Date(),
             },
             {
                 title: "Old Boy",
@@ -132,6 +154,8 @@ module.exports = {
                 genreId: 9,
                 rating: 9.8,
                 minAge: 16,
+                createdAt: new Date(),
+                updatedAt: new Date(),
             },
             {
                 title: "Joker",
@@ -142,6 +166,8 @@ module.exports = {
                 genreId: 4,
                 rating: 9.9,
                 minAge: 12,
+                createdAt: new Date(),
+                updatedAt: new Date(),
             },
             {
                 title: "Inglorius Basterds",
@@ -152,6 +178,8 @@ module.exports = {
                 genreId: 2,
                 rating: 9.6,
                 minAge: 10,
+                createdAt: new Date(),
+                updatedAt: new Date(),
             },
             {
                 title: "Requiem for a Dream",
@@ -162,6 +190,8 @@ module.exports = {
                 genreId: 3,
                 rating: 8.4,
                 minAge: 6,
+                createdAt: new Date(),
+                updatedAt: new Date(),
             },
             {
                 title: "The Dark Knight",
@@ -172,6 +202,8 @@ module.exports = {
                 genreId: 4,
                 rating: 9,
                 minAge: 10,
+                createdAt: new Date(),
+                updatedAt: new Date(),
             },
             {
                 title: "The Lion King",
@@ -182,6 +214,8 @@ module.exports = {
                 genreId: 1,
                 rating: 8.9,
                 minAge: 3,
+                createdAt: new Date(),
+                updatedAt: new Date(),
             },
             {
                 title: "American History X",
@@ -192,6 +226,8 @@ module.exports = {
                 genreId: 6,
                 rating: 8.5,
                 minAge: 12,
+                createdAt: new Date(),
+                updatedAt: new Date(),
             },
             {
                 title: "The Usal Suspects",
@@ -202,6 +238,8 @@ module.exports = {
                 genreId: 9,
                 rating: 8.2,
                 minAge: 6,
+                createdAt: new Date(),
+                updatedAt: new Date(),
             },
             {
                 title: "The Hunt",
@@ -212,6 +250,8 @@ module.exports = {
                 genreId: 3,
                 rating: 8,
                 minAge: 10,
+                createdAt: new Date(),
+                updatedAt: new Date(),
             },
             {
                 title: "Die Hard",
@@ -222,6 +262,8 @@ module.exports = {
                 genreId: 9,
                 rating: 8.1,
                 minAge: 12,
+                createdAt: new Date(),
+                updatedAt: new Date(),
             },
             {
                 title: "A Beautiful Mind",
@@ -232,6 +274,8 @@ module.exports = {
                 genreId: 3,
                 rating: 8.3,
                 minAge: 3,
+                createdAt: new Date(),
+                updatedAt: new Date(),
             },
             {
                 title: "No Country for Old Men",
@@ -242,6 +286,8 @@ module.exports = {
                 genreId: 6,
                 rating: 9,
                 minAge: 13,
+                createdAt: new Date(),
+                updatedAt: new Date(),
             },
             {
                 title: "V for Vendetta",
@@ -252,6 +298,8 @@ module.exports = {
                 genreId: 4,
                 rating: 9,
                 minAge: 12,
+                createdAt: new Date(),
+                updatedAt: new Date(),
             },
             {
                 title: "Howl's Moving Castle",
@@ -262,6 +310,8 @@ module.exports = {
                 genreId: 10,
                 rating: 9.9,
                 minAge: 3,
+                createdAt: new Date(),
+                updatedAt: new Date(),
             },
             {
                 title: "12 Years a Slave",
@@ -272,6 +322,8 @@ module.exports = {
                 genreId: 3,
                 rating: 7.5,
                 minAge: 3,
+                createdAt: new Date(),
+                updatedAt: new Date(),
             },
             {
                 title: "Barbarian",
@@ -282,6 +334,8 @@ module.exports = {
                 genreId: 1,
                 rating: 8,
                 minAge: 13,
+                createdAt: new Date(),
+                updatedAt: new Date(),
             },
             {
                 title: "The Nightmare Before Christmas",
@@ -292,6 +346,8 @@ module.exports = {
                 genreId: 10,
                 rating: 9,
                 minAge: 3,
+                createdAt: new Date(),
+                updatedAt: new Date(),
             },
             {
                 title: "Edward Scissorhands",
@@ -302,7 +358,12 @@ module.exports = {
                 genreId: 5,
                 rating: 7,
                 minAge: 6,
+                createdAt: new Date(),
+                updatedAt: new Date(),
             },
         ]);
+    },
+    down: async (queryInterface, Sequelize) => {
+        await queryInterface.bulkDelete("movie", null, {});
     },
 };

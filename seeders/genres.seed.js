@@ -1,8 +1,7 @@
-const { GenreModel } = require("../models");
-
 module.exports = {
-    create: async () => {
-        await GenreModel.bulkCreate(
+    up: async (queryInterface, Sequelize) => {
+        await queryInterface.bulkInsert(
+            "genre",
             [
                 {
                     name: "Horror",
@@ -62,5 +61,8 @@ module.exports = {
             ],
             {}
         );
+    },
+    down: async (queryInterface, Sequelize) => {
+        await queryInterface.bulkDelete("genre", null, {});
     },
 };

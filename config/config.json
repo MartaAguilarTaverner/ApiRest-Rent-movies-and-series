@@ -6,5 +6,19 @@
         "host" : "localhost",
         "dialect" : "mysql",
         "port" : "3306"
+    },
+    "test": {
+        "username": "",
+        "password": "",
+        "database": "",
+        "host": "",
+        "dialect": "mysql"
+    },
+    "production": {
+        "username": "",
+        "password": "",
+        "database": "",
+        "host": "",
+        "dialect": "mysql"
     }
 }
