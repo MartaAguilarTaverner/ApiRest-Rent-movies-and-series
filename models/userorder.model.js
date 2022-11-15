@@ -1,26 +1,26 @@
 const { Model } = require("sequelize");
 const MovieModel = require("./movie.model");
-const SeriesModel = require("./series.model");
+const SerieModel = require("./serie.model");
 const UserModel = require("./user.model");
 
 module.exports = (sequelize, DataTypes) => {
-    class UserOrders extends Model {
+    class UserOrder extends Model {
         static associate(models) {
-            UserOrders.belongsTo(models.User, {
+            UserOrder.belongsTo(models.user, {
                 foreignKey: "genreId",
             });
 
-            UserOrders.belongsTo(models.Movie, {
+            UserOrder.belongsTo(models.movie, {
                 foreignKey: "movieId",
             });
 
-            UserOrders.belongsTo(models.Series, {
-                foreignKey: "seriesId",
+            UserOrder.belongsTo(models.serie, {
+                foreignKey: "serieId",
             });
         }
     }
 
-    UserOrders.init(
+    UserOrder.init(
         {
             userId: {
                 type: DataTypes.INTEGER,
@@ -37,19 +37,20 @@ module.exports = (sequelize, DataTypes) => {
                     key: "id",
                 },
             },
-            seriesId: {
+            serieId: {
                 type: DataTypes.INTEGER,
                 references: {
-                    model: SeriesModel,
+                    model: SerieModel,
                     key: "id",
                 },
             },
         },
         {
             sequelize,
-            modelName: "UserOrders",
+            modelName: "userorder",
+            tableName: "userorder",
         }
     );
 
-    return UserOrders;
+    return UserOrder;
 };

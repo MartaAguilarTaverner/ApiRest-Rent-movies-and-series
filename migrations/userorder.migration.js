@@ -1,6 +1,6 @@
 module.exports = {
     up: async (queryInterface, Sequelize) => {
-        await queryInterface.createTable("userorders", {
+        await queryInterface.createTable("userorder", {
             id: {
                 allowNull: false,
                 autoIncrement: true,
@@ -26,10 +26,10 @@ module.exports = {
                 onUpdate: "CASCADE",
                 onDelete: "CASCADE",
             },
-            seriesId: {
+            serieId: {
                 type: Sequelize.INTEGER,
                 references: {
-                    model: "series",
+                    model: "serie",
                     key: "id",
                 },
                 onUpdate: "CASCADE",
@@ -46,6 +46,6 @@ module.exports = {
         });
     },
     down: async (queryInterface, Sequelize) => {
-        await queryInterface.dropTable("user");
+        await queryInterface.dropTable("userorder");
     },
 };

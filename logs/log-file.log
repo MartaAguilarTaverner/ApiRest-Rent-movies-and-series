@@ -1,0 +1,6 @@
+{"level":"info","message":"::1 - - [15/Nov/2022:19:02:58 +0000] \"GET /genre HTTP/1.1\" 500 69 \"-\" \"PostmanRuntime/7.29.2\"\n","timestamp":"2022-11-15T19:02:58.189Z"}
+{"level":"info","message":"::1 - - [15/Nov/2022:19:03:38 +0000] \"GET /genre HTTP/1.1\" 500 54 \"-\" \"PostmanRuntime/7.29.2\"\n","timestamp":"2022-11-15T19:03:38.208Z"}
+{"level":"info","message":"::1 - - [15/Nov/2022:19:05:31 +0000] \"GET /genre HTTP/1.1\" 200 1144 \"-\" \"PostmanRuntime/7.29.2\"\n","timestamp":"2022-11-15T19:05:31.003Z"}
+{"level":"info","message":"::1 - - [15/Nov/2022:19:07:58 +0000] \"GET /genre/2 HTTP/1.1\" 200 105 \"-\" \"PostmanRuntime/7.29.2\"\n","timestamp":"2022-11-15T19:07:58.038Z"}
+{"level":"info","message":"::1 - - [15/Nov/2022:19:12:16 +0000] \"GET /genre/2 HTTP/1.1\" 200 105 \"-\" \"PostmanRuntime/7.29.2\"\n","timestamp":"2022-11-15T19:12:16.291Z"}
+{"level":"info","message":"::1 - - [15/Nov/2022:19:12:21 +0000] \"GET /genre HTTP/1.1\" 200 1144 \"-\" \"PostmanRuntime/7.29.2\"\n","timestamp":"2022-11-15T19:12:21.057Z"}

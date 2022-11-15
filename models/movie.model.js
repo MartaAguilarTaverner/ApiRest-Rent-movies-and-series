@@ -4,11 +4,11 @@ const GenreModel = require("./genre.model");
 module.exports = (sequelize, DataTypes) => {
     class Movie extends Model {
         static associate(models) {
-            this.hasMany(models.UserOrders, {
+            this.hasMany(models.userorder, {
                 foreignKey: "movieId",
             });
 
-            Movie.belongsTo(models.Genre, {
+            Movie.belongsTo(models.genre, {
                 foreignKey: "genreId",
             });
         }
@@ -53,7 +53,8 @@ module.exports = (sequelize, DataTypes) => {
         },
         {
             sequelize,
-            modelName: "Movie",
+            modelName: "movie",
+            tableName: "movie",
         }
     );
 

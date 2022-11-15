@@ -2,19 +2,19 @@ const { Model } = require("sequelize");
 const GenreModel = require("./genre.model");
 
 module.exports = (sequelize, DataTypes) => {
-    class Series extends Model {
+    class Serie extends Model {
         static associate(models) {
-            this.hasMany(models.UserOrders, {
-                foreignKey: "seriesId",
+            this.hasMany(models.userorder, {
+                foreignKey: "serieId",
             });
 
-            Series.belongsTo(models.Genre, {
+            Serie.belongsTo(models.genre, {
                 foreignKey: "genreId",
             });
         }
     }
 
-    Series.init(
+    Serie.init(
         {
             title: {
                 type: DataTypes.STRING,
@@ -71,9 +71,10 @@ module.exports = (sequelize, DataTypes) => {
         },
         {
             sequelize,
-            modelName: "Series",
+            modelName: "serie",
+            tableName: "serie",
         }
     );
 
-    return Series;
+    return Serie;
 };
