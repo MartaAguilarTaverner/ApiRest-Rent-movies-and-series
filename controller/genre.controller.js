@@ -3,6 +3,7 @@ const genre = db.genre;
 
 const GenreController = {};
 
+//Read Functions of Serie CRUD
 GenreController.getAll = async (req, res) => {
     try {
         const response = await genre.findAll();

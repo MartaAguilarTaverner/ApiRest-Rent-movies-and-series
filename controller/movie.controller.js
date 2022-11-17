@@ -1,5 +1,6 @@
 const MovieController = {};
 
+//Read Functions of Serie CRUD
 MovieController.getAll = async (req, res) => {
     try {
         const id = req.params.id;
