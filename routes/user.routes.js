@@ -7,8 +7,9 @@ router.get("/", UserController.getAll);
 router.get("/:id", UserController.getOneById);
 router.get("/:name", UserController.getOneByName);
 router.get("/:email", UserController.getOneByEmail);
-router.get("/:dateBirth", UserController.getOneByDateBirth);
-router.get("/:subscribed", UserController.getOneBySubscribed);
-router.get("/:isAdmin", UserController.getOneByIsAdmin);
+router.get("/allSubscribed", UserController.getAllUserSubcribed);
+router.get("/allAdmin", UserController.getAllUserAdmin);
+
+router.post("/login", UserController.login);
 
 module.exports = router;

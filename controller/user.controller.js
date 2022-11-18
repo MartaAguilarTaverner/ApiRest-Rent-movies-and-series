@@ -1,3 +1,6 @@
+const db = require("../models");
+const user = db.user;
+
 const UserController = {};
 
 //Read Functions of Serie CRUD
@@ -59,11 +62,9 @@ UserController.getOneByEmail = async (req, res) => {
     }
 };
 
-UserController.getOneByDateBirth = async (req, res) => {
+UserController.getAllUserSubcribed = async (req, res) => {
     try {
-        const dateBirth = req.params.dateBirth;
-
-        const response = await user.findOne({ where: { dateBirth } });
+        const response = await user.findAll({ where: { subscribed: true } });
 
         res.send(response);
     } catch (error) {
@@ -74,11 +75,9 @@ UserController.getOneByDateBirth = async (req, res) => {
     }
 };
 
-UserController.getOneBySubscribed = async (req, res) => {
+UserController.getAllUserAdmin = async (req, res) => {
     try {
-        const subscribed = req.params.subscribed;
-
-        const response = await user.findOne({ where: { subscribed } });
+        const response = await user.findAll({ where: { isAdmin: true } });
 
         res.send(response);
     } catch (error) {
@@ -89,13 +88,27 @@ UserController.getOneBySubscribed = async (req, res) => {
     }
 };
 
-UserController.getOneByIsAdmin = async (req, res) => {
+UserController.login = async (req, res) => {
     try {
-        const isAdmin = req.params.isAdmin;
+        const body = req.body;
+        const email = body.email;
+        const password = body.password;
 
-        const response = await user.findOne({ where: { isAdmin } });
+        const result = await user.findOne({ where: { email } });
 
-        res.send(response);
+        if (result && password === result.password) {
+            const user = {
+                id: result.id,
+                name: result.name,
+                email: result.email,
+                isAdmin: result.isAdmin,
+                subscribed: result.subscribed,
+            };
+
+            res.send(user);
+        } else {
+            throw new Error("No user registered with those credentials");
+        }
     } catch (error) {
         res.status(500).send({
             message:
@@ -103,3 +116,5 @@ UserController.getOneByIsAdmin = async (req, res) => {
         });
     }
 };
+
+module.exports = UserController;

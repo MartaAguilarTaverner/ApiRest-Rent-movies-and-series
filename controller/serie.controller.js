@@ -1,3 +1,6 @@
+const db = require("../models");
+const serie = db.serie;
+
 const SerieController = {};
 
 //Read Functions of Serie CRUD
