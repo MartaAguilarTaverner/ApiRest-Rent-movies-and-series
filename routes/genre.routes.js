@@ -1,10 +1,15 @@
 const express = require("express");
-const router = express.Router();
-
+const AuthController = require("../controller/auth.controllers");
 const GenreController = require("../controller/genre.controller");
 
-router.get("/", GenreController.getAll);
+const router = express.Router();
 
-router.get("/:id", GenreController.getOneById);
+router.get("/", AuthController.authenticateToken, GenreController.getAll);
+
+router.get(
+    "/:id",
+    AuthController.authenticateToken,
+    GenreController.getOneById
+);
 
 module.exports = router;

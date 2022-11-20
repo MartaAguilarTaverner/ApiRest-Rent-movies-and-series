@@ -1,16 +1,59 @@
 const express = require("express");
-const router = express.Router();
-
+const AuthController = require("../controller/auth.controllers");
 const SerieController = require("../controller/serie.controller");
 
-router.get("/", SerieController.getAll);
-router.get("/:id", SerieController.getOneById);
-router.get("/:title", SerieController.getOneByTitle);
-router.get("/:year", SerieController.getOneByYear);
-router.get("/:director", SerieController.getOneByDirector);
-router.get("/:minAge", SerieController.getOneByMinAge);
-router.get("/:rating", SerieController.getOneByRating);
-router.get("/:cinemaPasses", SerieController.getOneByCinemaPasses);
-router.get("/:theaterPasses", SerieController.getOneByTheaterPasses);
+const router = express.Router();
+
+router.get("/", AuthController.authenticateToken, SerieController.getAll);
+router.get(
+    "/:id(\\d+$)",
+    AuthController.authenticateToken,
+    SerieController.getOneById
+);
+router.get(
+    "/title",
+    AuthController.authenticateToken,
+    SerieController.getOneByTitle
+);
+router.get(
+    "/year/:year",
+    AuthController.authenticateToken,
+    SerieController.getAllByYear
+);
+router.get(
+    "/director",
+    AuthController.authenticateToken,
+    SerieController.getAllByDirector
+);
+router.get(
+    "/minage/:minage",
+    AuthController.authenticateToken,
+    SerieController.getAllByMinAge
+);
+router.get(
+    "/toprating",
+    AuthController.authenticateToken,
+    SerieController.getTopRating
+);
+router.get(
+    "/cinemapasses",
+    AuthController.authenticateToken,
+    SerieController.getAllByCinemaPasses
+);
+router.get(
+    "/theaterpasses",
+    AuthController.authenticateToken,
+    SerieController.getAllByTheaterPasses
+);
+router.get(
+    "/genre/:genreid",
+    AuthController.authenticateToken,
+    SerieController.getAllByGenre
+);
+router.get(
+    "/nextweekepisode",
+    AuthController.authenticateToken,
+    SerieController.getAllNextWeekEpisode
+);
 
 module.exports = router;

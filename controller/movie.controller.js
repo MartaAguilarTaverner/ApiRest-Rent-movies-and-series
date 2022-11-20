@@ -1,11 +1,14 @@
+const { Op } = require("sequelize");
+const db = require("../models");
+const movie = db.movie;
+
 const MovieController = {};
+const genre = db.genre;
 
 //Read Functions of Serie CRUD
 MovieController.getAll = async (req, res) => {
     try {
-        const id = req.params.id;
-
-        const response = await movie.findAll(id);
+        const response = await movie.findAll();
 
         res.send(response);
     } catch (error) {
@@ -18,20 +21,9 @@ MovieController.getAll = async (req, res) => {
 
 MovieController.getOneById = async (req, res) => {
     try {
-        const response = await movie.findByPk();
-    } catch (error) {
-        res.status(500).send({
-            message:
-                error.message || "Some error ocurred while retrieving movies",
-        });
-    }
-};
+        const id = req.params.id;
 
-MovieController.getOneByTitle = async (req, res) => {
-    try {
-        const title = req.params.title;
-
-        const response = await movie.findOne({ where: { title } });
+        const response = await movie.findByPk(id);
 
         res.send(response);
     } catch (error) {
@@ -42,11 +34,28 @@ MovieController.getOneByTitle = async (req, res) => {
     }
 };
 
-MovieController.getOneByYear = async (req, res) => {
+MovieController.getAllByTitle = async (req, res) => {
+    try {
+        const title = req.query.name;
+
+        const response = await movie.findAll({
+            where: { title: { [Op.substring]: title } },
+        });
+
+        res.send(response);
+    } catch (error) {
+        res.status(500).send({
+            message:
+                error.message || "Some error ocurred while retrieving movies",
+        });
+    }
+};
+
+MovieController.getAllByYear = async (req, res) => {
     try {
         const year = req.params.year;
 
-        const response = await movie.findOne({ where: { year } });
+        const response = await movie.findAll({ where: { year } });
 
         res.send(response);
     } catch (error) {
@@ -57,11 +66,13 @@ MovieController.getOneByYear = async (req, res) => {
     }
 };
 
-MovieController.getOneByDirector = async (req, res) => {
+MovieController.getAllByDirector = async (req, res) => {
     try {
-        const director = req.params.director;
+        const director = req.query.name;
 
-        const response = await movie.findOne({ where: { director } });
+        const response = await movie.findAll({
+            where: { director: { [Op.substring]: director } },
+        });
 
         res.send(response);
     } catch (error) {
@@ -72,11 +83,11 @@ MovieController.getOneByDirector = async (req, res) => {
     }
 };
 
-MovieController.getOneByMinAge = async (req, res) => {
+MovieController.getAllByMinAge = async (req, res) => {
     try {
         const minAge = req.params.minAge;
 
-        const response = await movie.findOne({ where: { minAge } });
+        const response = await movie.findAll({ where: { minAge } });
 
         res.send(response);
     } catch (error) {
@@ -87,11 +98,18 @@ MovieController.getOneByMinAge = async (req, res) => {
     }
 };
 
-MovieController.getOneByRating = async (req, res) => {
+MovieController.getTopRating = async (req, res) => {
     try {
-        const rating = req.params.rating;
+        const response = await movie.findAll({
+            order: [["rating", "DESC"]],
+            limit: 5,
+        });
 
-        const response = await movie.findOne({ where: { rating } });
+        const topRatingMovies = response.map((movie) => ({
+            id: movie.id,
+            title: movie.title,
+            rating: movie.rating,
+        }));
 
         res.send(response);
     } catch (error) {
@@ -101,3 +119,22 @@ MovieController.getOneByRating = async (req, res) => {
         });
     }
 };
+
+MovieController.getAllByGenre = async (req, res) => {
+    try {
+        const genreid = req.params.genreid;
+        const response = await movie.findAll({
+            where: { genreid },
+            include: genre,
+        });
+
+        res.send(response);
+    } catch (error) {
+        res.status(500).send({
+            message:
+                error.message || "Some error ocurred while retrieving movies",
+        });
+    }
+};
+
+module.exports = MovieController;

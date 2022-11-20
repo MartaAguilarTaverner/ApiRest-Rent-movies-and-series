@@ -1,14 +1,44 @@
 const express = require("express");
-const router = express.Router();
-
+const AuthController = require("../controller/auth.controllers");
 const MovieController = require("../controller/movie.controller");
 
-router.get("/", MovieController.getAll);
-router.get("/:id", MovieController.getOneById);
-router.get("/:title", MovieController.getOneByTitle);
-router.get("/:year", MovieController.getOneByYear);
-router.get("/:director", MovieController.getOneByDirector);
-router.get("/:minAge", MovieController.getOneByMinAge);
-router.get("/:rating", MovieController.getOneByRating);
+const router = express.Router();
+
+router.get("/", AuthController.authenticateToken, MovieController.getAll);
+router.get(
+    "/:id(\\d+$)",
+    AuthController.authenticateToken,
+    MovieController.getOneById
+);
+router.get(
+    "/title",
+    AuthController.authenticateToken,
+    MovieController.getAllByTitle
+);
+router.get(
+    "/year/:year",
+    AuthController.authenticateToken,
+    MovieController.getAllByYear
+);
+router.get(
+    "/director",
+    AuthController.authenticateToken,
+    MovieController.getAllByDirector
+);
+router.get(
+    "/minage/:minAge",
+    AuthController.authenticateToken,
+    MovieController.getAllByMinAge
+);
+router.get(
+    "/toprating",
+    AuthController.authenticateToken,
+    MovieController.getTopRating
+);
+router.get(
+    "/genre/:genreid",
+    AuthController.authenticateToken,
+    MovieController.getAllByGenre
+);
 
 module.exports = router;

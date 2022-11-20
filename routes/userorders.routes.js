@@ -1,9 +1,32 @@
 const express = require("express");
-const router = express.Router();
 
+const AuthController = require("../controller/auth.controllers");
 const UserOrdersController = require("../controller/userorders.controller");
 
-router.post("/movie", UserOrdersController.watchMovie);
-router.post("/serie", UserOrdersController.watchSerie);
+const router = express.Router();
+
+router.get("/", AuthController.authenticateToken, UserOrdersController.getAll);
+router.get(
+    "/listuser/:userid",
+    AuthController.authenticateToken,
+    UserOrdersController.getAllByUserId
+);
+
+router.post(
+    "/movie",
+    AuthController.authenticateToken,
+    UserOrdersController.watchMovie
+);
+router.post(
+    "/serie",
+    AuthController.authenticateToken,
+    UserOrdersController.watchSerie
+);
+
+router.put(
+    "/:id",
+    AuthController.authenticateToken,
+    UserOrdersController.modifyWatch
+);
 
 module.exports = router;

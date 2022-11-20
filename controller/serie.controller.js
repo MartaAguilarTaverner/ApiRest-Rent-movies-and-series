@@ -1,5 +1,7 @@
+const { Op } = require("sequelize");
 const db = require("../models");
 const serie = db.serie;
+const genre = db.genre;
 
 const SerieController = {};
 
@@ -34,9 +36,11 @@ SerieController.getOneById = async (req, res) => {
 
 SerieController.getOneByTitle = async (req, res) => {
     try {
-        const title = req.params.title;
+        const title = req.query.name;
 
-        const response = await serie.findOne({ where: { title } });
+        const response = await serie.findOne({
+            where: { title: { [Op.substring]: title } },
+        });
 
         res.send(response);
     } catch (error) {
@@ -47,11 +51,11 @@ SerieController.getOneByTitle = async (req, res) => {
     }
 };
 
-SerieController.getOneByYear = async (req, res) => {
+SerieController.getAllByYear = async (req, res) => {
     try {
         const year = req.params.year;
 
-        const response = await serie.findOne({ where: { year } });
+        const response = await serie.findAll({ where: { year } });
 
         res.send(response);
     } catch (error) {
@@ -62,11 +66,13 @@ SerieController.getOneByYear = async (req, res) => {
     }
 };
 
-SerieController.getOneByDirector = async (req, res) => {
+SerieController.getAllByDirector = async (req, res) => {
     try {
-        const director = req.params.director;
+        const director = req.query.name;
 
-        const response = await serie.findOne({ where: { director } });
+        const response = await serie.findAll({
+            where: { director: { [Op.substring]: director } },
+        });
 
         res.send(response);
     } catch (error) {
@@ -77,11 +83,11 @@ SerieController.getOneByDirector = async (req, res) => {
     }
 };
 
-SerieController.getOneByMinAge = async (req, res) => {
+SerieController.getAllByMinAge = async (req, res) => {
     try {
-        const minAge = req.params.minAge;
+        const minAge = req.params.minage;
 
-        const response = await serie.findOne({ where: { minAge } });
+        const response = await serie.findAll({ where: { minAge } });
 
         res.send(response);
     } catch (error) {
@@ -92,13 +98,20 @@ SerieController.getOneByMinAge = async (req, res) => {
     }
 };
 
-SerieController.getOneByRating = async (req, res) => {
+SerieController.getTopRating = async (req, res) => {
     try {
-        const rating = req.params.rating;
+        const response = await serie.findAll({
+            order: [["rating", "DESC"]],
+            limit: 5,
+        });
 
-        const response = await serie.findOne({ where: { rating } });
+        const topRatingSeries = response.map((serie) => ({
+            id: serie.id,
+            title: serie.title,
+            rating: serie.rating,
+        }));
 
-        res.send(response);
+        res.send(topRatingSeries);
     } catch (error) {
         res.status(500).send({
             message:
@@ -107,11 +120,9 @@ SerieController.getOneByRating = async (req, res) => {
     }
 };
 
-SerieController.getOneByCinemaPasses = async (req, res) => {
+SerieController.getAllByCinemaPasses = async (req, res) => {
     try {
-        const cinemaPasses = req.params.cinemaPasses;
-
-        const response = await serie.findOne({ where: { cinemaPasses } });
+        const response = await serie.findAll({ where: { cinemaPasses: true } });
 
         res.send(response);
     } catch (error) {
@@ -122,11 +133,11 @@ SerieController.getOneByCinemaPasses = async (req, res) => {
     }
 };
 
-SerieController.getOneByTheaterPasses = async (req, res) => {
+SerieController.getAllByTheaterPasses = async (req, res) => {
     try {
-        const theaterPasses = req.params.theaterPasses;
-
-        const response = await serie.findOne({ where: { theaterPasses } });
+        const response = await serie.findAll({
+            where: { theaterPasses: true },
+        });
 
         res.send(response);
     } catch (error) {
@@ -136,3 +147,45 @@ SerieController.getOneByTheaterPasses = async (req, res) => {
         });
     }
 };
+
+SerieController.getAllByGenre = async (req, res) => {
+    try {
+        const genreid = req.params.genreid;
+
+        const response = await serie.findAll({
+            where: { genreid },
+            include: genre,
+        });
+
+        res.send(response);
+    } catch (error) {
+        res.status(500).send({
+            message:
+                error.message || "Some error ocurred while retrieving series",
+        });
+    }
+};
+
+SerieController.getAllNextWeekEpisode = async (req, res) => {
+    try {
+        const nextWeekDate = new Date();
+        nextWeekDate.setDate(new Date().getDate() + 7);
+
+        const response = await serie.findAll({
+            where: {
+                nextEpisodeDate: {
+                    [Op.between]: [new Date(), nextWeekDate],
+                },
+            },
+        });
+
+        res.send(response);
+    } catch (error) {
+        res.status(500).send({
+            message:
+                error.message || "Some error ocurred while retrieving series",
+        });
+    }
+};
+
+module.exports = SerieController;

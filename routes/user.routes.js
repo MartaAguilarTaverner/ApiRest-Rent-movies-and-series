@@ -1,15 +1,42 @@
 const express = require("express");
-const router = express.Router();
-
+const AuthController = require("../controller/auth.controllers");
 const UserController = require("../controller/user.controller");
 
-router.get("/", UserController.getAll);
-router.get("/:id", UserController.getOneById);
-router.get("/:name", UserController.getOneByName);
-router.get("/:email", UserController.getOneByEmail);
-router.get("/allSubscribed", UserController.getAllUserSubcribed);
-router.get("/allAdmin", UserController.getAllUserAdmin);
+const router = express.Router();
 
+router.get("/", AuthController.authenticateToken, UserController.getAll);
+router.get(
+    "/allsubscribed",
+    AuthController.authenticateToken,
+    UserController.getAllUserSubcribed
+);
+router.get(
+    "/alladmin",
+    AuthController.authenticateToken,
+    UserController.getAllUserAdmin
+);
+
+router.get("/:id", AuthController.authenticateToken, UserController.getOneById);
+router.get(
+    "/:name",
+    AuthController.authenticateToken,
+    UserController.getOneByName
+);
+router.get(
+    "/:email",
+    AuthController.authenticateToken,
+    UserController.getOneByEmail
+);
+
+router.post("/", UserController.register);
 router.post("/login", UserController.login);
+
+router.put("/:id", AuthController.authenticateToken, UserController.modifyUser);
+
+router.delete(
+    "/:id",
+    AuthController.authenticateToken,
+    UserController.deleteUser
+);
 
 module.exports = router;
