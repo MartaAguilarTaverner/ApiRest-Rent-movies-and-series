@@ -156,8 +156,3 @@ To modify data of the orders of a user.
 -   download the project.
 -   In the console "npm i".
 -   Go to Railway and use the comands "npx sequelize-cli db:migrate", "npx sequelize-cli db:seed:all".
-
-Descargar el proyecto y ejecutar el comando "npm i" para descargar las dependencias. La api se conecta con una base de datos creada en railway,en caso de querer usar una base de datos local el proyecto tiene incluidas migraciones y seeders,que se ejecutan con los siguientes comandos:
-
-npx sequelize-cli db:migrate
-npx sequelize-cli db:seed:all

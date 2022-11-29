@@ -4,6 +4,7 @@ const morgan = require("morgan");
 const jwt = require("jsonwebtoken");
 const crypto = require("crypto-js");
 const fs = require("fs");
+const cors = require("cors");
 
 const logger = require("./config/winston");
 const db = require("./db/db");
@@ -20,6 +21,13 @@ dotenv.config();
 
 app.use(morgan("combined", { stream: logger.stream }));
 app.use(express.json());
+
+const corsOptions = {
+    origin: "http://localhost:3000",
+    optionsSuccessStatus: 200,
+};
+
+app.use(cors(corsOptions));
 app.use(router);
 
 db.then(() => {
