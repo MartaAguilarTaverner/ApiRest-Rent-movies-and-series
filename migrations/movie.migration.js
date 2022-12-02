@@ -51,6 +51,10 @@ module.exports = {
                 allowNull: false,
                 type: Sequelize.DATE,
             },
+            imgURL: {
+                type: Sequelize.STRING,
+                allowNull: false,
+            },
         });
     },
     down: async (queryInterface, Sequelize) => {
