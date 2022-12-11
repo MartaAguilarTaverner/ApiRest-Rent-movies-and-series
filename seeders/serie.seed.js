@@ -305,7 +305,7 @@ module.exports = {
                 theaterPasses: false,
                 createdAt: new Date(),
                 updatedAt: new Date(),
-                imgURL: "https://m.media-amazon.com/images/M/MV5BMzFkMGIyMWUtOWQ4Mi00ZTUzLWIxZDItMjM0YjJkN2FjY2Q4XkEyXkFqcGdeQXVyMTQ0OTA3OTY4._V1_.jpg",
+                imgURL: "https://m.media-amazon.com/images/M/MV5BYmU5OWM5ZTAtNjUzOC00NmUyLTgyOWMtMjlkNjdlMDAzMzU1XkEyXkFqcGdeQXVyMDM2NDM2MQ@@._V1_.jpg",
             },
             {
                 title: "How I Met Your Mother",
@@ -360,6 +360,24 @@ module.exports = {
                 createdAt: new Date(),
                 updatedAt: new Date(),
                 imgURL: "https://m.media-amazon.com/images/M/MV5BYjFkMTlkYWUtZWFhNy00M2FmLThiOTYtYTRiYjVlZWYxNmJkXkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_.jpg",
+            },
+            {
+                title: "Lost",
+                description:
+                    "The survivors of a plane crash are forced to work together in order to survive on a seemingly deserted tropical island.",
+                director: "J.J. Abrams, Jeffrey Lieber, Damon Lindelof",
+                year: 2004,
+                genreId: 2,
+                rating: 8,
+                minAge: 10,
+                seasons: 6,
+                episodes: 120,
+                nextEpisodeDate: null,
+                cinemaPasses: false,
+                theaterPasses: false,
+                createdAt: new Date(),
+                updatedAt: new Date(),
+                imgURL: "<https://m.media-amazon.com/images/M/MV5BNzhlY2E5NDUtYjJjYy00ODg3LWFkZWQtYTVmMzU4ZWZmOWJkXkEyXkFqcGdeQXVyNTA4NzY1MzY@._V1_.jpg",
             },
         ]);
     },
