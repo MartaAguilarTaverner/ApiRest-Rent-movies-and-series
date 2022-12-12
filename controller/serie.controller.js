@@ -102,13 +102,14 @@ SerieController.getTopRating = async (req, res) => {
     try {
         const response = await serie.findAll({
             order: [["rating", "DESC"]],
-            limit: 5,
+            limit: 6,
         });
 
         const topRatingSeries = response.map((serie) => ({
             id: serie.id,
             title: serie.title,
             rating: serie.rating,
+            imgURL: serie.imgURL,
         }));
 
         res.send(topRatingSeries);

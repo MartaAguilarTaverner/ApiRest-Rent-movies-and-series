@@ -7,7 +7,7 @@ module.exports = (sequelize, DataTypes) => {
     class UserOrder extends Model {
         static associate(models) {
             UserOrder.belongsTo(models.user, {
-                foreignKey: "genreId",
+                foreignKey: "userId",
             });
 
             UserOrder.belongsTo(models.movie, {

@@ -102,13 +102,14 @@ MovieController.getTopRating = async (req, res) => {
     try {
         const response = await movie.findAll({
             order: [["rating", "DESC"]],
-            limit: 5,
+            limit: 6,
         });
 
         const topRatingMovies = response.map((movie) => ({
             id: movie.id,
             title: movie.title,
             rating: movie.rating,
+            imgURL: movie.imgURL,
         }));
 
         res.send(response);
