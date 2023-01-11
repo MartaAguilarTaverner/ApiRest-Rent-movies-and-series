@@ -1,7 +1,7 @@
 {
     "development" : {
         "username" : "root",
-        "password" : "Logan22",
+        "password" : "Logan3110",
         "database" : "RentingStar",
         "host" : "localhost",
         "dialect" : "mysql",

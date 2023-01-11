@@ -120,7 +120,7 @@ UserController.login = async (req, res) => {
     } catch (error) {
         res.status(500).send({
             message:
-                error.message || "Some error ocurred while retrieving users",
+                error.message || "Some error ocurred while trying to access, please try again after few minutes",
         });
     }
 };
@@ -144,7 +144,7 @@ UserController.register = async (req, res) => {
     } catch (error) {
         res.status(500).send({
             message:
-                error.message || "Some error ocurred while retrieving users",
+                error.message || "Some error ocurred while trying to make the registration, please check everything is alright or try again after few minutes",
         });
     }
 };
@@ -166,7 +166,7 @@ UserController.modifyUser = async (req, res) => {
     } catch (error) {
         res.status(500).send({
             message:
-                error.message || "Some error ocurred while retrieving users",
+                error.message || "Some error ocurred while modifying a user, please check everything is alright or try again few minutes later",
         });
     }
 };
@@ -181,7 +181,7 @@ UserController.deleteUser = async (req, res) => {
     } catch (error) {
         res.status(500).send({
             message:
-                error.message || "Some error ocurred while retrieving users",
+                error.message || "Some error ocurred while deleting a user, please check everything is alright or try again few minutes later",
         });
     }
 };
