@@ -1,5 +1,5 @@
-const { Op } = require("sequelize");
-const db = require("../models");
+const { Op } = require('sequelize');
+const db = require('../models');
 const serie = db.serie;
 const genre = db.genre;
 
@@ -13,8 +13,7 @@ SerieController.getAll = async (req, res) => {
         res.send(response);
     } catch (error) {
         res.status(500).send({
-            message:
-                error.message || "Some error ocurred while retrieving series",
+            message: error.message || 'Some error ocurred while retrieving series',
         });
     }
 };
@@ -28,8 +27,7 @@ SerieController.getOneById = async (req, res) => {
         res.send(response);
     } catch (error) {
         res.status(500).send({
-            message:
-                error.message || "Some error ocurred while retrieving series",
+            message: error.message || 'Some error ocurred while retrieving a serie',
         });
     }
 };
@@ -45,8 +43,7 @@ SerieController.getOneByTitle = async (req, res) => {
         res.send(response);
     } catch (error) {
         res.status(500).send({
-            message:
-                error.message || "Some error ocurred while retrieving series",
+            message: error.message || 'Some error ocurred while retrieving the serie with that name',
         });
     }
 };
@@ -60,8 +57,7 @@ SerieController.getAllByYear = async (req, res) => {
         res.send(response);
     } catch (error) {
         res.status(500).send({
-            message:
-                error.message || "Some error ocurred while retrieving series",
+            message: error.message || 'Some error ocurred while retrieving all the series of that year',
         });
     }
 };
@@ -77,8 +73,7 @@ SerieController.getAllByDirector = async (req, res) => {
         res.send(response);
     } catch (error) {
         res.status(500).send({
-            message:
-                error.message || "Some error ocurred while retrieving series",
+            message: error.message || 'Some error ocurred while retrieving all the series of that director',
         });
     }
 };
@@ -92,8 +87,7 @@ SerieController.getAllByMinAge = async (req, res) => {
         res.send(response);
     } catch (error) {
         res.status(500).send({
-            message:
-                error.message || "Some error ocurred while retrieving series",
+            message: error.message || 'Some error ocurred while retrieving all the series available for that age',
         });
     }
 };
@@ -101,7 +95,7 @@ SerieController.getAllByMinAge = async (req, res) => {
 SerieController.getTopRating = async (req, res) => {
     try {
         const response = await serie.findAll({
-            order: [["rating", "DESC"]],
+            order: [['rating', 'DESC']],
             limit: 6,
         });
 
@@ -115,8 +109,7 @@ SerieController.getTopRating = async (req, res) => {
         res.send(topRatingSeries);
     } catch (error) {
         res.status(500).send({
-            message:
-                error.message || "Some error ocurred while retrieving series",
+            message: error.message || 'Some error ocurred while retrieving the top rating series',
         });
     }
 };
@@ -128,8 +121,7 @@ SerieController.getAllByCinemaPasses = async (req, res) => {
         res.send(response);
     } catch (error) {
         res.status(500).send({
-            message:
-                error.message || "Some error ocurred while retrieving series",
+            message: error.message || 'Some error ocurred while retrieving the series with cinema passes',
         });
     }
 };
@@ -143,8 +135,7 @@ SerieController.getAllByTheaterPasses = async (req, res) => {
         res.send(response);
     } catch (error) {
         res.status(500).send({
-            message:
-                error.message || "Some error ocurred while retrieving series",
+            message: error.message || 'Some error ocurred while retrieving the series with theater passes',
         });
     }
 };
@@ -161,8 +152,7 @@ SerieController.getAllByGenre = async (req, res) => {
         res.send(response);
     } catch (error) {
         res.status(500).send({
-            message:
-                error.message || "Some error ocurred while retrieving series",
+            message: error.message || 'Some error ocurred while retrieving the series of that genre',
         });
     }
 };
@@ -184,7 +174,7 @@ SerieController.getAllNextWeekEpisode = async (req, res) => {
     } catch (error) {
         res.status(500).send({
             message:
-                error.message || "Some error ocurred while retrieving series",
+                error.message || 'Some error ocurred while retrieving the series with next episode available next week',
         });
     }
 };

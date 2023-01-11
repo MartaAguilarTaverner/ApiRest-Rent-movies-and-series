@@ -1,4 +1,4 @@
-const db = require("../models");
+const db = require('../models');
 const userOrder = db.userorder;
 
 const UserOrdersController = {};
@@ -10,9 +10,7 @@ UserOrdersController.getAll = async (req, res) => {
         res.send(response);
     } catch (error) {
         res.status(500).send({
-            message:
-                error.message ||
-                "Some error ocurred while retrieving userorder",
+            message: error.message || 'Some error ocurred while retrieving all the user watchs',
         });
     }
 };
@@ -28,9 +26,7 @@ UserOrdersController.watchMovie = async (req, res) => {
         res.send({ id: response.id });
     } catch (error) {
         res.status(500).send({
-            message:
-                error.message ||
-                "Some error ocurred while retrieving userorder",
+            message: error.message || 'Some error ocurred while recording the watch of the user',
         });
     }
 };
@@ -47,9 +43,7 @@ UserOrdersController.watchSerie = async (req, res) => {
         res.send({ id: response.id });
     } catch (error) {
         res.status(500).send({
-            message:
-                error.message ||
-                "Some error ocurred while retrieving userorder",
+            message: error.message || 'Some error ocurred while recording the watch of the user',
         });
     }
 };
@@ -70,7 +64,7 @@ UserOrdersController.modifyWatch = async (req, res) => {
         res.status(500).send({
             message:
                 error.message ||
-                "Some error ocurred while retrieving userorder",
+                'Some error ocurred while modifying a user view, please check everything is alright or try again after few minutes',
         });
     }
 };
@@ -84,9 +78,7 @@ UserOrdersController.getAllByUserId = async (req, res) => {
         res.send(response);
     } catch (error) {
         res.status(500).send({
-            message:
-                error.message ||
-                "Some error ocurred while retrieving userorders",
+            message: error.message || 'Some error ocurred while retrieving all the orders of that user',
         });
     }
 };

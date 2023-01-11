@@ -1,5 +1,5 @@
-const db = require("../models");
-const AuthController = require("./auth.controllers");
+const db = require('../models');
+const AuthController = require('./auth.controllers');
 const user = db.user;
 
 const UserController = {};
@@ -15,8 +15,7 @@ UserController.getAll = async (req, res) => {
         res.send(response);
     } catch (error) {
         res.status(500).send({
-            message:
-                error.message || "Some error ocurred while retrieving users",
+            message: error.message || 'Some error ocurred while retrieving users',
         });
     }
 };
@@ -28,8 +27,7 @@ UserController.getAllUserSubcribed = async (req, res) => {
         res.send(response);
     } catch (error) {
         res.status(500).send({
-            message:
-                error.message || "Some error ocurred while retrieving users",
+            message: error.message || 'Some error ocurred while retrieving subscribed users',
         });
     }
 };
@@ -41,8 +39,7 @@ UserController.getAllUserAdmin = async (req, res) => {
         res.send(response);
     } catch (error) {
         res.status(500).send({
-            message:
-                error.message || "Some error ocurred while retrieving users",
+            message: error.message || 'Some error ocurred while retrieving admin users',
         });
     }
 };
@@ -56,8 +53,7 @@ UserController.getOneById = async (req, res) => {
         res.send(response);
     } catch (error) {
         res.status(500).send({
-            message:
-                error.message || "Some error ocurred while retrieving users",
+            message: error.message || 'Some error ocurred while retrieving the user',
         });
     }
 };
@@ -71,8 +67,7 @@ UserController.getOneByName = async (req, res) => {
         res.send(response);
     } catch (error) {
         res.status(500).send({
-            message:
-                error.message || "Some error ocurred while retrieving users",
+            message: error.message || 'Some error ocurred while retrieving a user with that name',
         });
     }
 };
@@ -86,8 +81,7 @@ UserController.getOneByEmail = async (req, res) => {
         res.send(response);
     } catch (error) {
         res.status(500).send({
-            message:
-                error.message || "Some error ocurred while retrieving users",
+            message: error.message || 'Some error ocurred while retrieving a user by that email',
         });
     }
 };
@@ -115,12 +109,11 @@ UserController.login = async (req, res) => {
 
             res.send(userInfo);
         } else {
-            throw new Error("No user registered with those credentials");
+            throw new Error('No user registered with those credentials');
         }
     } catch (error) {
         res.status(500).send({
-            message:
-                error.message || "Some error ocurred while trying to access, please try again after few minutes",
+            message: error.message || 'Some error ocurred while trying to access, please try again after few minutes',
         });
     }
 };
@@ -144,7 +137,8 @@ UserController.register = async (req, res) => {
     } catch (error) {
         res.status(500).send({
             message:
-                error.message || "Some error ocurred while trying to make the registration, please check everything is alright or try again after few minutes",
+                error.message ||
+                'Some error ocurred while trying to make the registration, please check everything is alright or try again after few minutes',
         });
     }
 };
@@ -166,7 +160,8 @@ UserController.modifyUser = async (req, res) => {
     } catch (error) {
         res.status(500).send({
             message:
-                error.message || "Some error ocurred while modifying a user, please check everything is alright or try again few minutes later",
+                error.message ||
+                'Some error ocurred while modifying a user, please check everything is alright or try again few minutes later',
         });
     }
 };
@@ -181,7 +176,8 @@ UserController.deleteUser = async (req, res) => {
     } catch (error) {
         res.status(500).send({
             message:
-                error.message || "Some error ocurred while deleting a user, please check everything is alright or try again few minutes later",
+                error.message ||
+                'Some error ocurred while deleting a user, please check everything is alright or try again few minutes later',
         });
     }
 };

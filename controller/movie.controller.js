@@ -1,5 +1,5 @@
-const { Op } = require("sequelize");
-const db = require("../models");
+const { Op } = require('sequelize');
+const db = require('../models');
 const movie = db.movie;
 
 const MovieController = {};
@@ -13,8 +13,7 @@ MovieController.getAll = async (req, res) => {
         res.send(response);
     } catch (error) {
         res.status(500).send({
-            message:
-                error.message || "Some error ocurred while retrieving movies",
+            message: error.message || 'Some error ocurred while retrieving movies',
         });
     }
 };
@@ -28,8 +27,7 @@ MovieController.getOneById = async (req, res) => {
         res.send(response);
     } catch (error) {
         res.status(500).send({
-            message:
-                error.message || "Some error ocurred while retrieving movies",
+            message: error.message || 'Some error ocurred while retrieving a movie',
         });
     }
 };
@@ -45,8 +43,7 @@ MovieController.getAllByTitle = async (req, res) => {
         res.send(response);
     } catch (error) {
         res.status(500).send({
-            message:
-                error.message || "Some error ocurred while retrieving movies",
+            message: error.message || 'Some error ocurred while retrieving the title of a movie',
         });
     }
 };
@@ -60,8 +57,7 @@ MovieController.getAllByYear = async (req, res) => {
         res.send(response);
     } catch (error) {
         res.status(500).send({
-            message:
-                error.message || "Some error ocurred while retrieving movies",
+            message: error.message || 'Some error ocurred while retrieving all the movies of this year',
         });
     }
 };
@@ -77,8 +73,7 @@ MovieController.getAllByDirector = async (req, res) => {
         res.send(response);
     } catch (error) {
         res.status(500).send({
-            message:
-                error.message || "Some error ocurred while retrieving movies",
+            message: error.message || 'Some error ocurred while retrieving all the movies of that director',
         });
     }
 };
@@ -92,8 +87,7 @@ MovieController.getAllByMinAge = async (req, res) => {
         res.send(response);
     } catch (error) {
         res.status(500).send({
-            message:
-                error.message || "Some error ocurred while retrieving movies",
+            message: error.message || 'Some error ocurred while retrieving the movies availables for that age',
         });
     }
 };
@@ -101,7 +95,7 @@ MovieController.getAllByMinAge = async (req, res) => {
 MovieController.getTopRating = async (req, res) => {
     try {
         const response = await movie.findAll({
-            order: [["rating", "DESC"]],
+            order: [['rating', 'DESC']],
             limit: 6,
         });
 
@@ -115,8 +109,7 @@ MovieController.getTopRating = async (req, res) => {
         res.send(response);
     } catch (error) {
         res.status(500).send({
-            message:
-                error.message || "Some error ocurred while retrieving movies",
+            message: error.message || 'Some error ocurred while retrieving the top rating movies',
         });
     }
 };
@@ -132,8 +125,7 @@ MovieController.getAllByGenre = async (req, res) => {
         res.send(response);
     } catch (error) {
         res.status(500).send({
-            message:
-                error.message || "Some error ocurred while retrieving movies",
+            message: error.message || 'Some error ocurred while retrieving all the movies of that genre',
         });
     }
 };
