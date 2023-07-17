@@ -130,4 +130,19 @@ MovieController.getAllByGenre = async (req, res) => {
     }
 };
 
+MovieController.getMoviebyDirectorGenre = async (req, res) => {
+    try {
+        const genreid = req.params.genreid;
+        const director = req.params.director;
+
+        const response = await movie.findall({ where: { genreid, director } });
+
+        res.send(response);
+    } catch (error) {
+        res.status(500).send({
+            message: error.message || 'Some error ocurred while retrieving all the movies of that genre and director',
+        });
+    }
+};
+
 module.exports = MovieController;
